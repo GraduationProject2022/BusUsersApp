@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.BusDetailsFragment"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/_16sdp"
+        >
+
+        <ImageView
+            android:id="@+id/BusDetailsFragment_iv"
+            android:layout_width="@dimen/_224sdp"
+            android:layout_height="@dimen/_224sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_64sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_staticName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/BusDetailsFragment_iv"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_32sdp"
+            android:text="@string/name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/BusDetailsFragment_iv"
+            android:layout_marginTop="@dimen/_34sdp"
+            android:layout_toEndOf="@id/DriverDetailsFragment_tv_staticName"
+            android:text="Bus 1"
+            android:layout_alignStart="@id/DriverDetailsFragment_tv_DriverName"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_staticDriverName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_Name"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/Drivername"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_DriverName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_staticName"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_toEndOf="@id/DriverDetailsFragment_tv_staticDriverName"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="Hamdan"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_staticLoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_staticDriverName"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/Location"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_Loc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_DriverName"
+            android:layout_alignStart="@id/DriverDetailsFragment_tv_DriverName"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="Khanyounis"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_staticPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_staticLoc"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/Phone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_Phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_Loc"
+            android:layout_alignStart="@id/DriverDetailsFragment_tv_DriverName"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="0599123456"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_staticSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_Phone"
+            android:layout_alignEnd="@id/DriverDetailsFragment_tv_staticDriverName"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/NumOfPass"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_Size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_Phone"
+            android:layout_alignStart="@id/DriverDetailsFragment_tv_DriverName"
+            android:layout_marginTop="@dimen/_32sdp"
+            android:text="50"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/DriverDetailsFragment_fab_join"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/_16sdp"
+            android:src="@drawable/ic_baseline_person_add_alt_1_24"
+            app:backgroundTint="@color/purple_500"
+            app:maxImageSize="@dimen/_24sdp"
+
+            />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_currentNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_toStartOf="@id/DriverDetailsFragment_fab_join"
+            android:background="@color/purple_500"
+            android:drawableEnd="@drawable/ic_baseline_person_pin_24"
+            android:drawableTint="@color/black"
+            android:padding="@dimen/_4sdp"
+            android:text="33"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_24ssp" />
+
+    </RelativeLayout>
+
+
+</ScrollView>

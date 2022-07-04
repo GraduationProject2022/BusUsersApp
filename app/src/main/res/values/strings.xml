@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Bus Now</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="SignIn">Sign In</string>
+    <string name="Username">Username</string>
+    <string name="Email">Email</string>
+    <string name="password">Password</string>
+    <string name="already_have">Already Have An Account?</string>
+    <string name="ForgetPassword">Forgot PAssword?</string>
+    <string name="Buses">Buses</string>
+    <string name="Home">Home</string>
+    <string name="AddBus">Add Bus</string>
+    <string name="Message">Meesage</string>
+    <string name="Agenda">Home</string>
+    <string name="Profile">Add Bus</string>
+    <string name="name">Name</string>
+    <string name="Drivername">Driver Name</string>
+    <string name="Location">Location</string>
+    <string name="WriteYourMsg">Write your message</string>
+    <string name="Phone">Phone</string>
+
+    <string-array name="locations">
+        <item>select location...</item>
+        <item>الشمال</item>
+        <item>Gaza</item>
+        <item>الوسطى</item>
+        <item>Khanyounis</item>
+        <item>Rafah</item>
+    </string-array>
+
+    <string-array name="passengers">
+        <item>select Bus size...</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+        <item>65</item>
+        <item>70</item>
+        <item>75</item>
+        <item>80</item>
+        <item>85</item>
+        <item>90</item>
+        <item>95</item>
+        <item>100</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="NumOfPass">Max # of \n Passengers</string>
+    <string name="Logout">Logout</string>
+    <string name="EditProfile">Edit Profile</string>
+    <string name="membersince">Member Since</string>
+</resources>

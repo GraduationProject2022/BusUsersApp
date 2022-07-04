@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.DriverDetailsFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/DriverDetailsFragment_iv"
+            android:layout_width="@dimen/_224sdp"
+            android:layout_height="@dimen/_224sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_64sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_staticname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_iv"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_32sdp"
+            android:text="@string/Drivername"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_iv"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_34sdp"
+            android:layout_toEndOf="@id/DriverDetailsFragment_tv_staticname"
+            android:text="Hamdan"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_staticLoc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_staticname"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/Location"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_Loc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_staticname"
+            android:layout_alignStart="@id/DriverDetailsFragment_tv_name"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="Khanyounis"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_staticPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_staticLoc"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/Phone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_Phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_Loc"
+            android:layout_alignStart="@id/DriverDetailsFragment_tv_name"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="0599123456"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+</ScrollView>

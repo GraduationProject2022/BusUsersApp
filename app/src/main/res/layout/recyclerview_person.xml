@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_132sdp"
+    android:layout_height="@dimen/_172sdp"
+    app:cardElevation="@dimen/_8sdp"
+    app:cardUseCompatPadding="true"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_4sdp">
+
+        <ImageView
+            android:id="@+id/recyclerview_person_iv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:id="@+id/recyclerview_person_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recyclerview_person_iv"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:fontFamily="@font/aldrich"
+            android:gravity="center"
+            android:text="@string/Username"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16ssp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recyclerview_person_tv"
+            android:text="5"
+            android:id="@+id/recyclerview_person_tv_rate"
+            android:textSize="@dimen/_16ssp"
+            android:textColor="@color/purple_500"
+            android:gravity="end"
+            android:layout_centerHorizontal="true"
+            android:drawablePadding="@dimen/_5sdp"
+            android:drawableStart="@drawable/ic_baseline_star_24"
+            android:drawableTint="@color/purple_500"
+            />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

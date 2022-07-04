@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_6sdp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:src="@drawable/bus"
+                android:scaleType="centerCrop"
+                android:layout_margin="@dimen/_6sdp"
+                android:id="@+id/busItem_iv"
+                android:layout_alignParentStart="true"
+
+                />
+
+            <TextView
+                android:id="@+id/busItem_tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:layout_toEndOf="@id/busItem_iv"
+                android:text="Bus 1"
+                android:textColor="@color/purple_500"
+                android:textSize="@dimen/_20ssp"
+                android:textStyle="bold"
+                android:layout_toStartOf="@id/busItem_iv_btn"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/busItem_iv"
+                android:layout_below="@id/busItem_tv_name"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:text="Khanyounis"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:id="@+id/busItem_tv_location"
+                android:layout_toStartOf="@id/busItem_iv_btn"
+                />
+
+            <ImageView
+                android:id="@+id/busItem_iv_btn"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                app:tint="@color/purple_500"
+                android:layout_margin="@dimen/_6sdp"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
