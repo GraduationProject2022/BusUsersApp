@@ -8,14 +8,14 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import hai2022.team.bususersapp.ui.fragments.EditProfileFragment;
 import hai2022.team.bususersapp.R;
 import hai2022.team.bususersapp.databinding.ActivityContainerBinding;
 import hai2022.team.bususersapp.models.Bus;
+import hai2022.team.bususersapp.models.User;
 import hai2022.team.bususersapp.ui.fragments.AddBusFragment;
 import hai2022.team.bususersapp.ui.fragments.BusDetailsFragment;
 import hai2022.team.bususersapp.ui.fragments.DriverDetailsFragment;
@@ -47,6 +47,9 @@ public class ContainerActivity extends AppCompatActivity {
         } else if (i.getStringExtra(Constants.FRAGMENT).equals(Constants.BUS_DETAILS_FRAGMENT)) {
             getSupportFragmentManager().beginTransaction().replace(R.id.ContainerActivity_container, BusDetailsFragment.newInstance((Bus) getIntent().getSerializableExtra("Bus"))).commit();
             binding.maintoolbar.maintoolbarTvTitle.setText("Bus Now");
+        }else if(i.getStringExtra(Constants.FRAGMENT).equals(Constants.EDIT_PROFILE_FRAGMENT)){
+            getSupportFragmentManager().beginTransaction().replace(R.id.ContainerActivity_container, EditProfileFragment.newInstance((User) getIntent().getSerializableExtra("user"))).commit();
+            binding.maintoolbar.maintoolbarTvTitle.setText("Edit Profile");
         }
     }
 

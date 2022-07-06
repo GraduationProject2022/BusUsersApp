@@ -26,7 +26,9 @@ import hai2022.team.bususersapp.interfaces.StorageListener;
 import hai2022.team.bususersapp.models.Bus;
 import hai2022.team.bususersapp.models.Chat;
 import hai2022.team.bususersapp.models.User;
+import hai2022.team.bususersapp.ui.activities.ContainerActivity;
 import hai2022.team.bususersapp.ui.activities.SplashActivity;
+import hai2022.team.bususersapp.utils.Constants;
 
 
 public class ProfileFragment extends Fragment {
@@ -137,6 +139,15 @@ public class ProfileFragment extends Fragment {
                 authentication.logout();
                 getActivity().finishAffinity();
                 startActivity(new Intent(getContext(), SplashActivity.class));
+            }
+        });
+
+        binding.SettingsFragmentBtnEditprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), ContainerActivity.class);
+                i.putExtra(Constants.FRAGMENT, Constants.EDIT_PROFILE_FRAGMENT);
+                startActivity(i);
             }
         });
 

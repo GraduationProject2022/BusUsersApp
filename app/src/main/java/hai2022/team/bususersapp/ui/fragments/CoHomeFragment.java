@@ -49,9 +49,14 @@ public class CoHomeFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static CoHomeFragment newInstance() {
+    public static CoHomeFragment newInstance(String type) {
         if (coHomeFragment == null) {
             coHomeFragment = new CoHomeFragment();
+        }
+        if (type.equals("student")){
+            Bundle b = new Bundle();
+            b.putString("type","student");
+            coHomeFragment.setArguments(b);
         }
         return coHomeFragment;
     }
@@ -97,6 +102,7 @@ public class CoHomeFragment extends Fragment {
 
             @Override
             public void getBuses(ArrayList<Bus> buses) {
+                buses1.removeAll(buses1);
                 buses1.addAll(buses);
                 adapter.notifyDataSetChanged();
                 dialog.dismiss();
@@ -124,7 +130,9 @@ public class CoHomeFragment extends Fragment {
         binding = FragmentCoHomeBinding.inflate(getLayoutInflater());
         View root = binding.getRoot();
         buses1 = new ArrayList<>();
-
+        if (getArguments() != null){
+            binding.CoHomeFragmentTvBuses.setText(getArguments().getString("Drivers"));
+        }
         realtime.getBuses(authentication.firebaseUser().getDisplayName());
         adapter = new UserRecyclerviewAdapter(getContext(), buses1, R.layout.recyclerview_person, authentication.firebaseUser().getDisplayName(), new UserCallback() {
             @Override

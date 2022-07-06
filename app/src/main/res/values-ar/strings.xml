@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-        <string name="app_name">Bus Now</string>
-        <string name="SignUp">تسجيل حساب</string>
-        <string name="SignIn">تسجيل الدخول</string>
-        <string name="Username">اسم المستخدم</string>
-        <string name="Email">الايميل</string>
-        <string name="password">كلمة المرور</string>
-        <string name="already_have">بالفعل لديك حساب؟</string>
-        <string name="ForgetPassword">نسيت كلمة المرور؟</string>
-        <string name="Buses">الباصات</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="app_name">Bus Now</string>
+    <string name="SignUp">تسجيل حساب</string>
+    <string name="SignIn">تسجيل الدخول</string>
+    <string name="Username">اسم المستخدم</string>
+    <string name="Email">الايميل</string>
+    <string name="password">كلمة المرور</string>
+    <string name="already_have">بالفعل لديك حساب؟</string>
+    <string name="ForgetPassword">نسيت كلمة المرور؟</string>
+    <string name="Buses">الباصات</string>
     <string name="AddBus">اضافة باص</string>
     <string name="Home">الصفحة الرئيسية</string>
     <string name="Message">الرسائل</string>
     <string name="Agenda">الاجندة</string>
     <string name="Profile">الملف الشخصي</string>
-        <string name="name">الاسم</string>
-        <string name="Drivername">اسم السائق</string>
-        <string name="Location">المكان</string>
-        <string name="WriteYourMsg">اكتب رسالتك...</string>
-        <string name="Phone">رقم الجوال</string>
+    <string name="name">الاسم</string>
+    <string name="Drivername">اسم السائق</string>
+    <string name="Location">المكان</string>
+    <string name="WriteYourMsg">اكتب رسالتك...</string>
+    <string name="Phone">رقم الجوال</string>
 
-        <string-array name="locations">
-            <item>اختر المكان...</item>
-            <item>الشمال</item>
-            <item>غزة</item>
-            <item>الوسطى</item>
-            <item>خانيونس</item>
-            <item>رفح</item>
-        </string-array>
+    <string-array name="locations">
+        <item>اختر المكان...</item>
+        <item>الشمال</item>
+        <item>غزة</item>
+        <item>الوسطى</item>
+        <item>خانيونس</item>
+        <item>رفح</item>
+    </string-array>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="NumOfPass">العدد الاقصى للركاب</string>

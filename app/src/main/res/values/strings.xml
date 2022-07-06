@@ -3,6 +3,8 @@
     <string name="SignUp">Sign Up</string>
     <string name="SignIn">Sign In</string>
     <string name="Username">Username</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
     <string name="Email">Email</string>
     <string name="password">Password</string>
     <string name="already_have">Already Have An Account?</string>
@@ -11,8 +13,8 @@
     <string name="Home">Home</string>
     <string name="AddBus">Add Bus</string>
     <string name="Message">Meesage</string>
-    <string name="Agenda">Home</string>
-    <string name="Profile">Add Bus</string>
+    <string name="Agenda">Agend</string>
+    <string name="Profile">Profile</string>
     <string name="name">Name</string>
     <string name="Drivername">Driver Name</string>
     <string name="Location">Location</string>
@@ -56,4 +58,12 @@
     <string name="Logout">Logout</string>
     <string name="EditProfile">Edit Profile</string>
     <string name="membersince">Member Since</string>
+    <string name="DarkMode">Dark Mode</string>
+    <string name="Language">Language</string>
+    <string name="Share">Share</string>
+    <string name="review">Review</string>
+    <string name="About">About</string>
+    <string name="Fullname">Full name</string>
+    <string name="Address">Address</string>
+    <string name="drivers">Drivers</string>
 </resources>

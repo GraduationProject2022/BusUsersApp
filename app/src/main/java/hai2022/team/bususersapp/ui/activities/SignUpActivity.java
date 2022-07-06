@@ -3,6 +3,7 @@ package hai2022.team.bususersapp.ui.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -97,6 +98,18 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         signup();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        binding.SignupTvAlready.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getBaseContext(),SignInActivity.class));
+                finish();
+            }
+        });
     }
 
     private void signup() {

@@ -11,13 +11,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/_16sdp"
+        android:paddingBottom="@dimen/_142sdp"
         >
 
         <ImageView
             android:id="@+id/BusDetailsFragment_iv"
-            android:layout_width="@dimen/_224sdp"
-            android:layout_height="@dimen/_224sdp"
+            android:layout_width="@dimen/_142sdp"
+            android:layout_height="@dimen/_142sdp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_64sdp"
             android:scaleType="centerCrop"
@@ -148,20 +148,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
             android:layout_margin="@dimen/_16sdp"
             android:src="@drawable/ic_baseline_person_add_alt_1_24"
             app:backgroundTint="@color/purple_500"
             app:maxImageSize="@dimen/_24sdp"
-
+            android:layout_below="@id/DriverDetailsFragment_tv_staticSize"
             />
 
         <TextView
             android:id="@+id/DriverDetailsFragment_tv_currentNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@id/DriverDetailsFragment_tv_staticSize"
             android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
             android:layout_toStartOf="@id/DriverDetailsFragment_fab_join"
             android:background="@color/purple_500"
             android:drawableEnd="@drawable/ic_baseline_person_pin_24"
@@ -170,6 +170,21 @@
             android:text="33"
             android:textColor="@color/black"
             android:textSize="@dimen/_24ssp" />
+
+        <RatingBar
+            android:id="@+id/BusDetailsFragment_ratingbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_fab_join"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:stepSize=".5"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:max="5"
+            android:isIndicator="true"
+            android:numStars="5"
+            />
 
     </RelativeLayout>
 

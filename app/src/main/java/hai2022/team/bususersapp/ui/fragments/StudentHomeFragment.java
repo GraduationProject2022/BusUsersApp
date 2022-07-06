@@ -93,6 +93,7 @@ public class StudentHomeFragment extends Fragment {
 
             @Override
             public void getBuses(ArrayList<Bus> buses) {
+                buses1.removeAll(buses);
                 buses1.addAll(buses);
                 adapter.notifyDataSetChanged();
                 dialog.dismiss();

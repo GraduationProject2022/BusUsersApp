@@ -1,9 +1,11 @@
 package hai2022.team.bususersapp.ui.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -29,9 +32,11 @@ import hai2022.team.bususersapp.ui.fragments.ChatFragment;
 import hai2022.team.bususersapp.ui.fragments.CoHomeFragment;
 import hai2022.team.bususersapp.utils.Utils;
 
-public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener, NavigationView.OnNavigationItemSelectedListener {
     private ActivityMainBinding binding;
     private Authentication authentication;
+    private DrawerLayout mDrawerLayout;
+    private  ActionBarDrawerToggle drawerToggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //To Apply Settings on the application
@@ -40,9 +45,19 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         View view = binding.getRoot();
         super.onCreate(savedInstanceState);
         setContentView(view);
+        Toolbar toolbar = binding.maintoolbar.maintoolbar;
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        binding.maintoolbar.maintoolbarTvTitle.setText(R.string.Home);
+        drawerToggle=new ActionBarDrawerToggle(this,binding.drawaerLayout,toolbar,R.string.drawer_open,R.string.drawer_close);
+        binding.drawaerLayout.setDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+
+        binding.MainActivityNavdrawer.setNavigationItemSelectedListener(this);
+
         authentication = new Authentication();
         if (authentication.firebaseUser().getDisplayName().equals("driver")) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, CoHomeFragment.newInstance()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, CoHomeFragment.newInstance("")).commit();
         }else if (authentication.firebaseUser().getDisplayName().equals("bus")){
             Toast.makeText(this, "Bus Driver", Toast.LENGTH_SHORT).show();
             getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, new ChatFragment()).commit();
@@ -50,10 +65,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             Toast.makeText(this, "Student", Toast.LENGTH_SHORT).show();
             getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, StudentHomeFragment.newInstance()).commit();
         }
-        Toolbar toolbar = binding.maintoolbar.maintoolbar;
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-        binding.maintoolbar.maintoolbarTvTitle.setText(R.string.Home);
+
 
         Realtime realtime = new Realtime(getBaseContext(), new BusListiner() {
 
@@ -135,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         switch (item.getItemId()){
             case R.id.mainmenu_home:
                 if (authentication.firebaseUser().getDisplayName().equals("driver")) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, CoHomeFragment.newInstance()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, CoHomeFragment.newInstance("")).commit();
                 }else if (authentication.firebaseUser().getDisplayName().equals("bus")){
                     Toast.makeText(this, "Bus Driver", Toast.LENGTH_SHORT).show();
                 }else if(authentication.firebaseUser().getDisplayName().equals("student")){
@@ -154,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
                 }else if(authentication.firebaseUser().getDisplayName().equals("student")){
                     Toast.makeText(this, "Student", Toast.LENGTH_SHORT).show();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, CoHomeFragment.newInstance()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, CoHomeFragment.newInstance("student")).commit();
                 }
                 return true;
             case R.id.mainmenu_profile:
@@ -169,5 +181,10 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
     public void onBackPressed() {
         super.onBackPressed();
         this.finishAffinity();
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+        super.onPointerCaptureChanged(hasCapture);
     }
 }
