@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Task;
@@ -64,10 +65,16 @@ public class ProfileFragment extends Fragment {
 
             @Override
             public void getUser(User user) {
-                if (user.getImgPath().equals(""))
-                    Glide.with(getContext()).load("").placeholder(R.drawable.profile).into(binding.SettingsFragmentIvProfile);
-                else
-                    storage.download(user.getImgPath());
+                try {
+                    if (user.getImgPath().equals(""))
+                        Glide.with(getContext()).load("").placeholder(R.drawable.profile).into(binding.SettingsFragmentIvProfile);
+                    else
+                        storage.download(user.getImgPath());
+                    Toast.makeText(getContext(), "y: "+ user.getImgPath(), Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+
+                }
+
 
 
                 binding.SettingsFragmentTvMembersince.setText(user.getCreated_at());

@@ -192,6 +192,8 @@ public class Realtime {
         myRef.child("users").child(type).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                users.clear();
+                users.removeAll(users);
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     users.add(snapshot1.getValue(User.class));
                 }
@@ -218,6 +220,9 @@ public class Realtime {
         myRef.child("buses").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                buses.clear();
+                buses.removeAll(buses);
+
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     buses.add(snapshot1.getValue(Bus.class));
                 }
@@ -235,6 +240,8 @@ public class Realtime {
         myRef.child("msgs").child(id).orderByChild("time").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                chats.clear();
+                chats.removeAll(chats);
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     chats.add(snapshot1.getValue(Chat.class));
                 }

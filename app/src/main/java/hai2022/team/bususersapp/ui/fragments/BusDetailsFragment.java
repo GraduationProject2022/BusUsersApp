@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -12,21 +13,27 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.Task;
+
+import java.util.ArrayList;
 
 import hai2022.team.bususersapp.R;
 import hai2022.team.bususersapp.databases.firebase.Authentication;
 import hai2022.team.bususersapp.databases.firebase.CloudStorage;
 import hai2022.team.bususersapp.databases.firebase.Realtime;
 import hai2022.team.bususersapp.databinding.FragmentBusDetailsBinding;
+import hai2022.team.bususersapp.interfaces.BusListiner;
 import hai2022.team.bususersapp.interfaces.ReservationsListiner;
 import hai2022.team.bususersapp.interfaces.StorageListener;
 import hai2022.team.bususersapp.models.Bus;
+import hai2022.team.bususersapp.models.Chat;
+import hai2022.team.bususersapp.models.User;
 
 public class BusDetailsFragment extends Fragment {
     private static BusDetailsFragment detailsFragment;
     private Bus bus;
     private FragmentBusDetailsBinding binding;
-    private CloudStorage storage;
+    //    private CloudStorage storage;
     private Realtime realtime;
     private Authentication authentication;
     private ProgressDialog dialog;
@@ -55,19 +62,75 @@ public class BusDetailsFragment extends Fragment {
         dialog = new ProgressDialog(getContext());
         dialog.show();
         authentication = new Authentication();
-        storage = new CloudStorage(new StorageListener() {
+//        storage = new CloudStorage(new StorageListener() {
+//            @Override
+//            public void onDownloadImageListener(Uri uri) {
+//                Glide.with(getContext()).load(uri).placeholder(R.drawable.no_pictures).into(binding.BusDetailsFragmentIv);
+//            }
+//
+//            @Override
+//            public void onUploadImageListener(boolean status) {
+//
+//            }
+//        })
+
+        realtime = new Realtime(getContext(), new BusListiner() {
             @Override
-            public void onDownloadImageListener(Uri uri) {
-                Glide.with(getContext()).load(uri).placeholder(R.drawable.no_pictures).into(binding.BusDetailsFragmentIv);
+            public void ceatebus(@NonNull Task<Void> task) {
+
             }
 
             @Override
-            public void onUploadImageListener(boolean status) {
+            public void getUser(User user) {
 
             }
-        });
 
-        realtime = new Realtime(getContext(), new ReservationsListiner() {
+            @Override
+            public void getBus(Bus bus) {
+                binding.DriverDetailsFragmentTvName.setText(bus.getName());
+                binding.DriverDetailsFragmentTvDriverName.setText(bus.getDriverName());
+                binding.DriverDetailsFragmentTvLoc.setText(bus.getLocation());
+                binding.DriverDetailsFragmentTvPhone.setText(bus.getPhone());
+                binding.DriverDetailsFragmentTvSize.setText("" + bus.getPassengers());
+                if (bus.getLocation().equals("Gaza") || bus.getLocation().equals("غزة") || bus.getLocation().equals("الوسطى") || bus.getLocation().equals("الشمال")) {
+                    binding.BusDetailsFragmentIv.setImageResource(R.drawable.gaza);
+                } else if (bus.getLocation().equals("Khanyounis") || bus.getLocation().equals("خانيونس")) {
+                    binding.BusDetailsFragmentIv.setImageResource(R.drawable.khan);
+                } else {
+                    binding.BusDetailsFragmentIv.setImageResource(R.drawable.khan);
+                }
+            }
+
+            @Override
+            public void getAdmins(ArrayList<User> users) {
+
+            }
+
+            @Override
+            public void getDrivers(ArrayList<User> users) {
+
+            }
+
+            @Override
+            public void getStudents(ArrayList<User> users) {
+
+            }
+
+            @Override
+            public void getBuses(ArrayList<Bus> buses) {
+
+            }
+
+            @Override
+            public void getMsgs(ArrayList<Chat> chats) {
+
+            }
+
+            @Override
+            public void updateUser(boolean state) {
+
+            }
+        }, new ReservationsListiner() {
             @Override
             public void numOfReservations(int num) {
                 binding.DriverDetailsFragmentTvCurrentNum.setText("" + num);
@@ -76,12 +139,12 @@ public class BusDetailsFragment extends Fragment {
             @Override
             public void onReservationListener(boolean status) {
                 if (status) {
-                    if (isJoined){
+                    if (isJoined) {
                         dialog.dismiss();
                         Toast.makeText(getContext(), "تم حذف الحجز بنجاح", Toast.LENGTH_SHORT).show();
                         isJoined = false;
                         binding.DriverDetailsFragmentFabJoin.setImageResource(R.drawable.ic_baseline_person_add_alt_1_24);
-                    }else{
+                    } else {
                         dialog.dismiss();
                         Toast.makeText(getContext(), "تم الحجز بنجاح", Toast.LENGTH_SHORT).show();
                         isJoined = true;
@@ -93,7 +156,7 @@ public class BusDetailsFragment extends Fragment {
             @Override
             public void isReserved(boolean status) {
                 dialog.dismiss();
-                if (status){
+                if (status) {
                     isJoined = true;
                     binding.DriverDetailsFragmentFabJoin.setImageResource(R.drawable.ic_baseline_close_24);
                 }
@@ -117,14 +180,24 @@ public class BusDetailsFragment extends Fragment {
 
         realtime.getReservations(bus.getID());
 
-        storage.download(bus.getImgpath());
+//        storage.download(bus.getImgpath());
 
-        binding.DriverDetailsFragmentTvName.setText(bus.getName());
-        binding.DriverDetailsFragmentTvDriverName.setText(bus.getDriverName());
-        binding.DriverDetailsFragmentTvLoc.setText(bus.getLocation());
-        binding.DriverDetailsFragmentTvPhone.setText(bus.getPhone());
-        binding.DriverDetailsFragmentTvSize.setText("" + bus.getPassengers());
-
+        if (bus!=null) {
+            binding.DriverDetailsFragmentTvName.setText(bus.getName());
+            binding.DriverDetailsFragmentTvDriverName.setText(bus.getDriverName());
+            binding.DriverDetailsFragmentTvLoc.setText(bus.getLocation());
+            binding.DriverDetailsFragmentTvPhone.setText(bus.getPhone());
+            binding.DriverDetailsFragmentTvSize.setText("" + bus.getPassengers());
+            if (bus.getLocation().equals("Gaza") || bus.getLocation().equals("غزة") || bus.getLocation().equals("الوسطى") || bus.getLocation().equals("الشمال")) {
+                binding.BusDetailsFragmentIv.setImageResource(R.drawable.gaza);
+            } else if (bus.getLocation().equals("Khanyounis") || bus.getLocation().equals("خانيونس")) {
+                binding.BusDetailsFragmentIv.setImageResource(R.drawable.khan);
+            } else {
+                binding.BusDetailsFragmentIv.setImageResource(R.drawable.khan);
+            }
+        }else{
+            realtime.getBus(authentication.firebaseUser().getUid());
+        }
         binding.DriverDetailsFragmentFabJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,12 +205,12 @@ public class BusDetailsFragment extends Fragment {
                 dialog.setMessage("in progress...");
                 if (!isJoined) {
                     if (Integer.parseInt(binding.DriverDetailsFragmentTvCurrentNum.getText().toString()) < bus.getPassengers()) {
-                        realtime.addReversation(bus.getID(), authentication.firebaseUser().getUid(),"add");
+                        realtime.addReversation(bus.getID(), authentication.firebaseUser().getUid(), "add");
                     } else {
                         dialog.dismiss();
                     }
-                }else{
-                    realtime.addReversation(bus.getID(), authentication.firebaseUser().getUid(),"remove");
+                } else {
+                    realtime.addReversation(bus.getID(), authentication.firebaseUser().getUid(), "remove");
                 }
             }
         });

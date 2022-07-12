@@ -64,7 +64,7 @@ public class UserRecyclerviewAdapter extends RecyclerView.Adapter<UserRecyclervi
             storage = new CloudStorage(new StorageListener() {
                 @Override
                 public void onDownloadImageListener(Uri uri) {
-                    Glide.with(context).load(uri).placeholder(R.drawable.no_pictures).into(holder.iv_user);
+                    Glide.with(context).load(uri).placeholder(R.drawable.profile).into(holder.iv_user);
                     uri1 = uri;
 //                    holder.iv_user.setImageResource(buses.get(position).getImg());
                 }
@@ -77,9 +77,9 @@ public class UserRecyclerviewAdapter extends RecyclerView.Adapter<UserRecyclervi
             if (!buses.get(position).getImgpath().equals(""))
             storage.download(buses.get(position).getImgpath());
             if (buses.get(position).getImg() == 0) {
-                holder.iv_user.setImageResource(R.drawable.no_pictures);
+                holder.iv_user.setImageResource(R.drawable.profile);
             }
-            holder.tv_username.setText(buses.get(position).getLocation());
+            holder.tv_username.setText(buses.get(position).getName());
             holder.tv_rate.setText(buses.get(position).getRate() + "");
         }
         holder.itemView.setOnClickListener(new View.OnClickListener() {

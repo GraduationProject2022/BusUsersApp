@@ -2,6 +2,7 @@ package hai2022.team.bususersapp.adapters;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,7 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ViewHolder> {
         storage = new CloudStorage(new StorageListener() {
             @Override
             public void onDownloadImageListener(Uri uri) {
+                Log.d("UriImages", uri.getPath());
                 Glide.with(context).load(uri).placeholder(R.drawable.no_pictures).into(holder.iv_bus);
             }
 

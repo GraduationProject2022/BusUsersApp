@@ -10,10 +10,22 @@
         android:id="@+id/ChatFragment_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/chat_item_recyclerview"
         android:layout_above="@id/chat_message"
+        tools:listitem="@layout/chat_item_recyclerview"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="write any thing"
+        android:textSize="@dimen/_14ssp"
+        android:fontFamily="@font/biryani"
+        android:visibility="gone"
+        android:id="@+id/ChatFragment_tv_nomsgs"
+        android:layout_margin="@dimen/_32sdp"
+        />
 
     <EditText
         android:id="@+id/chat_message"
@@ -33,8 +45,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_baseline_send_24"
         android:padding="@dimen/_6sdp"
+        android:src="@drawable/ic_baseline_send_24"
         app:tint="@color/purple_500" />
 
 

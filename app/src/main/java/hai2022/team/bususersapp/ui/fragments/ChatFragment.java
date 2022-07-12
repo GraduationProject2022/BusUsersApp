@@ -99,10 +99,30 @@ public class ChatFragment extends Fragment {
 
             @Override
             public void getMsgs(ArrayList<Chat> chats) {
+                chats1.clear();
                 chats1.addAll(chats);
                 Collections.reverse(chats1);
                 adapter.notifyDataSetChanged();
                 dialog.dismiss();
+                if (chats1.size() == 0){
+                    if (authentication.firebaseUser().getDisplayName().equals("student")) {
+                        binding.ChatFragmentRv.setVisibility(View.GONE);
+                        binding.ChatFragmentTvNomsgs.setVisibility(View.VISIBLE);
+                        binding.ChatFragmentTvNomsgs.setText("Join to bus to show messages");
+                    }else{
+                        binding.ChatFragmentRv.setVisibility(View.GONE);
+                        binding.ChatFragmentTvNomsgs.setVisibility(View.VISIBLE);
+                        binding.ChatFragmentTvNomsgs.setText("write any thing");
+                    }
+                }else {
+                    if (authentication.firebaseUser().getDisplayName().equals("student")) {
+                        binding.ChatFragmentRv.setVisibility(View.VISIBLE);
+                        binding.ChatFragmentTvNomsgs.setVisibility(View.GONE);
+                    }else{
+                        binding.ChatFragmentRv.setVisibility(View.VISIBLE);
+                        binding.ChatFragmentTvNomsgs.setVisibility(View.GONE);
+                    }
+                }
             }
 
             @Override
@@ -144,19 +164,27 @@ public class ChatFragment extends Fragment {
         binding = FragmentChatBinding.inflate(getLayoutInflater());
         View root = binding.getRoot();
 
-        if (authentication.firebaseUser().getDisplayName().equals("student")){
+        if (authentication.firebaseUser().getDisplayName().equals("student")) {
             binding.chatSend.setVisibility(View.GONE);
             binding.chatMessage.setVisibility(View.GONE);
+        }else{
+            binding.chatSend.setVisibility(View.VISIBLE);
+            binding.chatMessage.setVisibility(View.VISIBLE);
         }
 
         chats1 = new ArrayList<>();
         binding.chatSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Chat chat = new Chat(binding.chatMessage.getText().toString(), Utils.currentDate(), Utils.currentTime(), authentication.firebaseUser().getUid());
-                realtime.senMsg(chat);
-                chats1.add(chat);
-                adapter.notifyDataSetChanged();
+                if (binding.chatMessage.getText().toString().equals(""))
+                    Toast.makeText(getContext(), "write message", Toast.LENGTH_SHORT).show();
+                else {
+                    Chat chat = new Chat(binding.chatMessage.getText().toString(), Utils.currentDate(), Utils.currentTime(), authentication.firebaseUser().getUid());
+                    realtime.senMsg(chat);
+//                    chats1.add(chat);
+//                    adapter.notifyDataSetChanged();
+                    binding.chatMessage.setText("");
+                }
             }
         });
         adapter = new ChatAdapter(chats1, getContext());

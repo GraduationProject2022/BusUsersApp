@@ -6,5 +6,6 @@ public class Constants {
     public static String BUS_DETAILS_FRAGMENT = "BUS_DETAILS_FRAGMENT";
     public static String EDIT_PROFILE_FRAGMENT = "EDIT_PROFILE_FRAGMENT";
     public static String FRAGMENT = "FRAGMENT";
+    public static String ABOUT_FRAGMENT = "ABOUT_FRAGMENT";
     public static int PROFILE_REQUEST_QUDE = 6;
 }

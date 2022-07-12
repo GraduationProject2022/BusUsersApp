@@ -173,7 +173,7 @@
 
         <RatingBar
             android:id="@+id/BusDetailsFragment_ratingbar"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/DriverDetailsFragment_fab_join"
             android:layout_marginStart="@dimen/_16sdp"
@@ -184,6 +184,8 @@
             android:max="5"
             android:isIndicator="true"
             android:numStars="5"
+            android:layout_centerHorizontal="true"
+            android:rating="2"
             />
 
     </RelativeLayout>
