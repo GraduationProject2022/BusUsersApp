@@ -38,20 +38,33 @@
                 />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/busItem_tv_location"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/busItem_iv"
                 android:layout_below="@id/busItem_tv_name"
-                android:layout_marginBottom="@dimen/_6sdp"
                 android:layout_marginStart="@dimen/_6sdp"
                 android:layout_marginEnd="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:layout_toEndOf="@id/busItem_iv"
                 android:text="Khanyounis"
-                android:textSize="@dimen/_14ssp"
                 android:textColor="@color/black"
-                android:textStyle="normal"
-                android:id="@+id/busItem_tv_location"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/busItem_tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/busItem_tv_name"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_6sdp"
                 android:layout_toStartOf="@id/busItem_iv_btn"
-                />
+                android:layout_toEndOf="@id/busItem_tv_location"
+                android:text="06:00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="normal" />
 
             <ImageView
                 android:id="@+id/busItem_iv_btn"

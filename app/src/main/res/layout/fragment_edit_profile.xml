@@ -23,34 +23,15 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_32ssp" />
 
-        <ImageView
-            android:id="@+id/ProfileFragment_iv_Profile"
-            android:layout_width="@dimen/_112sdp"
-            android:layout_height="@dimen/_112sdp"
-            android:layout_below="@id/ProfileFragment_tv_title"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ProfileFragment_iv_Profile"
-            android:layout_marginStart="-32dp"
-            android:layout_marginTop="-32dp"
-            android:id="@+id/ProfileFragment_iv_edit"
-            android:layout_toEndOf="@id/ProfileFragment_iv_Profile"
-            android:background="@drawable/loginsignup_button"
-            android:padding="@dimen/_2sdp"
-            android:src="@drawable/ic_baseline_edit_24"
-            app:tint="@color/purple_500" />
+
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ProfileFragment_etl_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ProfileFragment_iv_Profile"
+            android:layout_below="@id/ProfileFragment_tv_title"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginTop="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_16sdp"
@@ -128,7 +109,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ProfileFragment_et_phone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
