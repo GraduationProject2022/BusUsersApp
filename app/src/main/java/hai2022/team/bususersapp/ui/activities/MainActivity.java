@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
                 } else if (authentication.firebaseUser().getDisplayName().equals("student")) {
                     Toast.makeText(this, "Student", Toast.LENGTH_SHORT).show();
                     getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, StudentHomeFragment.newInstance()).commit();
-                }else{
+                } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, EditEmailAndPasswordFragment.newInstance()).commit();
 
                 }
@@ -192,9 +194,27 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
                 startActivity(i);
                 return true;
             case R.id.nav_drawer_logout:
-                authentication.logout();
-                finish();
-                startActivity(new Intent(getBaseContext(), SplashActivity.class));
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setCancelable(false);
+                builder.setMessage(R.string.RYWantLog);
+                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //if user pressed "yes", then he is allowed to exit from application
+                        authentication.logout();
+                        finish();
+                        startActivity(new Intent(getBaseContext(), SplashActivity.class));                  }
+                });
+                builder.setNegativeButton(android.R.string.cancel,new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //if user select "No", just cancel this dialog and continue with app
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert=builder.create();
+                alert.show();
+
                 return true;
         }
         return false;
@@ -202,8 +222,25 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        this.finishAffinity();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false);
+        builder.setMessage(R.string.RYWant);
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user pressed "yes", then he is allowed to exit from application
+                finishAffinity();
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel,new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //if user select "No", just cancel this dialog and continue with app
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert=builder.create();
+        alert.show();
     }
 
     @Override

@@ -73,4 +73,6 @@
     <string name="EditEmailAndPassword">Edit email and password</string>
     <string name="Time">Time to move on</string>
     <string name="RYShure">Are you sure to change your profile image?</string>
+    <string name="RYWant">Do you want to Exit?</string>
+    <string name="RYWantLog" >Do you want to Logout?</string>
 </resources>
