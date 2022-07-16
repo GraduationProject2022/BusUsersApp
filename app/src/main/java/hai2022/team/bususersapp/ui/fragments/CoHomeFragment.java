@@ -53,9 +53,9 @@ public class CoHomeFragment extends Fragment {
         if (coHomeFragment == null) {
             coHomeFragment = new CoHomeFragment();
         }
-        if (type.equals("student")){
+        if (type.equals("student")) {
             Bundle b = new Bundle();
-            b.putString("type","student");
+            b.putString("type", "student");
             coHomeFragment.setArguments(b);
         }
         return coHomeFragment;
@@ -102,6 +102,13 @@ public class CoHomeFragment extends Fragment {
 
             @Override
             public void getBuses(ArrayList<Bus> buses) {
+                if (authentication.firebaseUser().getDisplayName().equals("driver") && buses.size() == 0) {
+                    binding.CoHomeFragmentRv.setVisibility(View.GONE);
+                    binding.CoHomeFragmentBtnAddbus.setVisibility(View.VISIBLE);
+                } else {
+                    binding.CoHomeFragmentRv.setVisibility(View.VISIBLE);
+                    binding.CoHomeFragmentBtnAddbus.setVisibility(View.GONE);
+                }
                 buses1.removeAll(buses1);
                 buses1.addAll(buses);
                 adapter.notifyDataSetChanged();
@@ -118,7 +125,7 @@ public class CoHomeFragment extends Fragment {
 
             }
         });
-        authentication =new Authentication();
+        authentication = new Authentication();
         realtime.getBus(authentication.firebaseUser().getUid());
 
     }
@@ -130,7 +137,7 @@ public class CoHomeFragment extends Fragment {
         binding = FragmentCoHomeBinding.inflate(getLayoutInflater());
         View root = binding.getRoot();
         buses1 = new ArrayList<>();
-        if (getArguments() != null){
+        if (getArguments() != null) {
             binding.CoHomeFragmentTvBuses.setText(getArguments().getString("Drivers"));
         }
         realtime.getBuses(authentication.firebaseUser().getDisplayName());
@@ -138,7 +145,7 @@ public class CoHomeFragment extends Fragment {
             @Override
             public void bus_click_listener(Bus bus, Uri uri) {
                 Intent i = new Intent(getContext(), ContainerActivity.class);
-                i.putExtra(Constants.FRAGMENT,Constants.DRIVER_DETAILS_FRAGMENT);
+                i.putExtra(Constants.FRAGMENT, Constants.DRIVER_DETAILS_FRAGMENT);
                 i.putExtra("Bus", bus);
                 i.putExtra("Uri", uri);
                 startActivity(i);
@@ -146,9 +153,7 @@ public class CoHomeFragment extends Fragment {
 
             @Override
             public void add_new_bus() {
-                Intent i = new Intent(getContext(), ContainerActivity.class);
-                i.putExtra(Constants.FRAGMENT, Constants.ADD_BUS_FRAGMENT);
-                startActivity(i);
+                addBus();
             }
         });
 
@@ -158,5 +163,22 @@ public class CoHomeFragment extends Fragment {
 
         return root;
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        binding.CoHomeFragmentBtnAddbus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addBus();
+            }
+        });
+    }
+
+    private void addBus() {
+        Intent i = new Intent(getContext(), ContainerActivity.class);
+        i.putExtra(Constants.FRAGMENT, Constants.ADD_BUS_FRAGMENT);
+        startActivity(i);
     }
 }

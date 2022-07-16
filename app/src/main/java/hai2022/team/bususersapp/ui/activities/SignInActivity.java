@@ -34,17 +34,28 @@ public class SignInActivity extends AppCompatActivity {
         authentication = new Authentication(getBaseContext(), new AuthListiner() {
             @Override
             public void Signup(@NonNull Task<AuthResult> task) {
+
                 if (task.isSuccessful()) {
-                    if (!task.getResult().getUser().getDisplayName().equalsIgnoreCase("Admin")) {
-                        Utils.moveIntoActivity(getBaseContext(), MainActivity.class);
-                        finish();
-                    } else {
-                        authentication.logout();
-                        Toast.makeText(SignInActivity.this, "Login Failled", Toast.LENGTH_SHORT).show();
+                    try {
+
+                        if (!task.getResult().getUser().getDisplayName().equalsIgnoreCase("Admin")) {
+                        } else {
+                            authentication.logout();
+                            Toast.makeText(SignInActivity.this, "Login Failled", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (Exception e) {
+
                     }
                 } else {
                     Toast.makeText(SignInActivity.this, "Login Failled", Toast.LENGTH_SHORT).show();
                 }
+                Utils.moveIntoActivity(getBaseContext(), SplashActivity.class);
+                finish();
+            }
+
+            @Override
+            public void editInfo(@NonNull Task<Void> task, String edit) {
+
             }
         });
 

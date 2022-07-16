@@ -145,6 +145,7 @@ public class ChatFragment extends Fragment {
 
             }
 
+
             @Override
             public void ReservedBusId(String id) {
                 realtime.getMsgs(id);

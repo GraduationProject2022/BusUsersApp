@@ -1,5 +1,6 @@
 package hai2022.team.bususersapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
@@ -47,7 +48,7 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.iv_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +74,7 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ViewHolder> {
         }
         holder.tv_name.setText(buses.get(position).getName());
         holder.tv_location.setText(buses.get(position).getLocation());
+        holder.tv_time.setText(buses.get(position).getTimeToMove());
 
     }
 
@@ -83,7 +85,7 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView iv_bus, iv_btn;
-        TextView tv_name, tv_location;
+        TextView tv_name, tv_location, tv_time;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,6 +93,7 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ViewHolder> {
             iv_bus = itemView.findViewById(R.id.busItem_iv);
             tv_name = itemView.findViewById(R.id.busItem_tv_name);
             tv_location = itemView.findViewById(R.id.busItem_tv_location);
+            tv_time =itemView.findViewById(R.id.busItem_tv_time);
         }
     }
 }

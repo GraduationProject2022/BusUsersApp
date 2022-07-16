@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,8 +76,9 @@ public class AddBusFragment extends Fragment {
             @Override
             public void ceatebus(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(getContext(), "Bus Added", Toast.LENGTH_SHORT).show();
                     Imagepath = bus_uri != null ? "users/" + bus.getName() + "/" + bus.getDriverName().replace(" ", "") + bus_uri.getLastPathSegment() : bus.getImgpath();
+                    bus.setImgpath(Imagepath);
+                    Toast.makeText(getContext(), "Bus Added", Toast.LENGTH_SHORT).show();
                     if (bus_uri != null) {
                         CloudStorage storage = new CloudStorage(new StorageListener() {
                             @Override
@@ -87,16 +89,19 @@ public class AddBusFragment extends Fragment {
                             @Override
                             public void onUploadImageListener(boolean status) {
                                 if (status) {
-
+                                    Toast.makeText(getContext(), "image uploaded", Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(getContext(), "image not uploaded", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
                         storage.upload("Buses", "BusDrivers", bus.getName().replace(" ", ""), bus_uri);
-                        bus.setImgpath(Imagepath);
-//                        realtime.createBus();
-                    }else{
-//                        realtime.updateUser(bus);
+
+                    } else {
+
                     }
+                    getActivity().finishAffinity();
+                    startActivity(new Intent(getContext(), SignInActivity.class));
                 }
             }
 
@@ -143,8 +148,6 @@ public class AddBusFragment extends Fragment {
         });
 
 
-
-
         binding.SignupBtnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -156,22 +159,25 @@ public class AddBusFragment extends Fragment {
                     public void Signup(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            bus = new Bus(task.getResult().getUser().getUid(),binding.ProfileFragmentEtUsername.getText().toString(), binding.ProfileFragmentEtDriverName.getText().toString()
-                                    , binding.ProfileFragmentEtEmail.getText().toString(),"Buses/"+"BusDrivers/"+ binding.ProfileFragmentEtDriverName.getText().toString()+bus_uri.getLastPathSegment(), Integer.parseInt(binding.ProfileFragmentSpPassengers.getSelectedItem().toString())
-                                    , binding.ProfileFragmentSpLocations.getSelectedItem().toString(), binding.ProfileFragmentEtPassword.getText().toString());
+                            bus = new Bus(task.getResult().getUser().getUid(), binding.ProfileFragmentEtUsername.getText().toString(), binding.ProfileFragmentEtDriverName.getText().toString()
+                                    , binding.ProfileFragmentEtEmail.getText().toString(), "Buses/" + "BusDrivers/" + binding.ProfileFragmentEtDriverName.getText().toString() + bus_uri.getLastPathSegment(), Integer.parseInt(binding.ProfileFragmentSpPassengers.getSelectedItem().toString())
+                                    , 6, 1.1, binding.ProfileFragmentSpLocations.getSelectedItem().toString(), binding.ProfileFragmentEtPhone.getText().toString(), "06:00");
+                            bus.setTimeToMove(binding.ProfileFragmentEtTime.getText().toString());
                             task.getResult().getUser().updateProfile(new UserProfileChangeRequest.Builder().setDisplayName("bus").build());
-                            realtime.createBus(task.getResult().getUser().getUid(),bus);
-                            getActivity().finishAffinity();
-                            startActivity(new Intent(getContext(), SignInActivity.class));
-
+                            task.getResult().getUser().updateProfile(new UserProfileChangeRequest.Builder().setDisplayName("student").build());
+                            realtime.createBus(task.getResult().getUser().getUid(), bus);
                         }
+                    }
+
+                    @Override
+                    public void editInfo(@NonNull Task<Void> task, String edit) {
+
                     }
                 });
 
                 authentication.Signup(email, password);
             }
         });
-
 
 
     }
@@ -194,6 +200,7 @@ public class AddBusFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == Constants.PROFILE_REQUEST_QUDE && resultCode == Activity.RESULT_OK) {
             bus_uri = data.getData();
+
             binding.ProfileFragmentIvProfile.setImageURI(bus_uri);
         }
     }

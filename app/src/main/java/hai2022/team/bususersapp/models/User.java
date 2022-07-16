@@ -39,19 +39,6 @@ public class User implements Serializable {
         this.updated_at = updated_at;
     }
 
-    public User(String id, int img, String username, String fullname, String email, String phone, String address, String type, String created_at, String updated_at) {
-        this.id = id;
-        this.img = img;
-        this.username = username;
-        this.fullname = fullname;
-        this.email = email;
-        this.phone = phone;
-        this.address = address;
-        this.type = type;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-    }
-
     public String getId() {
         return id;
     }

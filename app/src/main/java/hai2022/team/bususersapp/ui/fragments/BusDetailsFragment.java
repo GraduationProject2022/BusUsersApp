@@ -60,7 +60,7 @@ public class BusDetailsFragment extends Fragment {
             bus = (Bus) getArguments().getSerializable("Bus");
         }
         dialog = new ProgressDialog(getContext());
-        dialog.show();
+//        dialog.show();
         authentication = new Authentication();
 //        storage = new CloudStorage(new StorageListener() {
 //            @Override
@@ -92,12 +92,13 @@ public class BusDetailsFragment extends Fragment {
                 binding.DriverDetailsFragmentTvLoc.setText(bus.getLocation());
                 binding.DriverDetailsFragmentTvPhone.setText(bus.getPhone());
                 binding.DriverDetailsFragmentTvSize.setText("" + bus.getPassengers());
+                binding.DriverDetailsFragmentTvTime.setText(bus.getTimeToMove());
                 if (bus.getLocation().equals("Gaza") || bus.getLocation().equals("غزة") || bus.getLocation().equals("الوسطى") || bus.getLocation().equals("الشمال")) {
                     binding.BusDetailsFragmentIv.setImageResource(R.drawable.gaza);
                 } else if (bus.getLocation().equals("Khanyounis") || bus.getLocation().equals("خانيونس")) {
-                    binding.BusDetailsFragmentIv.setImageResource(R.drawable.khan);
+                    binding.BusDetailsFragmentIv.setImageResource(R.drawable.khanyounis);
                 } else {
-                    binding.BusDetailsFragmentIv.setImageResource(R.drawable.khan);
+                    binding.BusDetailsFragmentIv.setImageResource(R.drawable.rafah);
                 }
             }
 
@@ -155,7 +156,7 @@ public class BusDetailsFragment extends Fragment {
 
             @Override
             public void isReserved(boolean status) {
-                dialog.dismiss();
+//                dialog.dismiss();
                 if (status) {
                     isJoined = true;
                     binding.DriverDetailsFragmentFabJoin.setImageResource(R.drawable.ic_baseline_close_24);
@@ -188,12 +189,13 @@ public class BusDetailsFragment extends Fragment {
             binding.DriverDetailsFragmentTvLoc.setText(bus.getLocation());
             binding.DriverDetailsFragmentTvPhone.setText(bus.getPhone());
             binding.DriverDetailsFragmentTvSize.setText("" + bus.getPassengers());
+            binding.DriverDetailsFragmentTvTime.setText("" + bus.getTimeToMove());
             if (bus.getLocation().equals("Gaza") || bus.getLocation().equals("غزة") || bus.getLocation().equals("الوسطى") || bus.getLocation().equals("الشمال")) {
                 binding.BusDetailsFragmentIv.setImageResource(R.drawable.gaza);
             } else if (bus.getLocation().equals("Khanyounis") || bus.getLocation().equals("خانيونس")) {
-                binding.BusDetailsFragmentIv.setImageResource(R.drawable.khan);
+                binding.BusDetailsFragmentIv.setImageResource(R.drawable.khanyounis);
             } else {
-                binding.BusDetailsFragmentIv.setImageResource(R.drawable.khan);
+                binding.BusDetailsFragmentIv.setImageResource(R.drawable.rafah);
             }
         }else{
             realtime.getBus(authentication.firebaseUser().getUid());

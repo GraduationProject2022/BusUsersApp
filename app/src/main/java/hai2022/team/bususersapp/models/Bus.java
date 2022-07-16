@@ -15,62 +15,26 @@ public class Bus implements Serializable {
     private String Location;
     private String Phone;
     private String Password;
+    private String timeToMove;
+
 
     public Bus() {
     }
 
-    public Bus(String ID, int img, String location) {
-        this.ID = ID;
-        this.img = img;
-        Location = location;
-    }
-
-    public Bus(String ID, String name, String driverName, String email, String imgpath, int img, int passengers, double rate, double numOfRev, String location) {
+    public Bus(String ID, String name, String driverName, String email, String imgpath, int passengers, double rate, double numOfRev, String location, String phone, String timeToMove) {
         this.ID = ID;
         this.name = name;
         DriverName = driverName;
         this.email = email;
         this.imgpath = imgpath;
-        this.img = img;
         Passengers = passengers;
         this.rate = rate;
         NumOfRev = numOfRev;
         Location = location;
-    }
-
-    public Bus(String name, String driverName, String email, String imgpath, int passengers, String location, String password) {
-        this.name = name;
-        DriverName = driverName;
-        this.email = email;
-        this.imgpath = imgpath;
-        Passengers = passengers;
-        Location = location;
-        Password = password;
-    }
-
-    public Bus(String ID, String name, String driverName, String email, String imgpath, int passengers, String location, String password) {
-        this.ID = ID;
-        this.name = name;
-        DriverName = driverName;
-        this.email = email;
-        this.imgpath = imgpath;
-        Passengers = passengers;
-        Location = location;
-        Password = password;
-    }
-
-
-    public Bus(String ID, String name, String driverName, String email, String imgpath, int passengers, String location, String phone, String password) {
-        this.ID = ID;
-        this.name = name;
-        DriverName = driverName;
-        this.email = email;
-        this.imgpath = imgpath;
-        Passengers = passengers;
-        Location = location;
         Phone = phone;
-        Password = password;
+        this.timeToMove = timeToMove;
     }
+
 
     public String getPhone() {
         return Phone;
@@ -166,5 +130,13 @@ public class Bus implements Serializable {
 
     public void setLocation(String location) {
         Location = location;
+    }
+
+    public String getTimeToMove() {
+        return timeToMove;
+    }
+
+    public void setTimeToMove(String timeToMove) {
+        this.timeToMove = timeToMove;
     }
 }

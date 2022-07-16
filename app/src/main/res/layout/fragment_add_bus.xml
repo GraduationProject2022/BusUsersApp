@@ -134,6 +134,34 @@
                 android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ProfileFragment_etl_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ProfileFragment_etl_phone"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:hint="@string/Location"
+            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_8sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_8sdp"
+            app:boxCornerRadiusTopStart="@dimen/_8sdp"
+            app:boxStrokeColor="@android:color/darker_gray"
+            app:boxStrokeWidth="@dimen/_2sdp"
+            app:counterEnabled="true"
+            app:counterMaxLength="50"
+            app:counterTextColor="@android:color/holo_green_dark"
+            app:errorEnabled="true"
+            app:hintEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ProfileFragment_et_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Spinner
             android:id="@+id/ProfileFragment_sp_locations"
             android:layout_width="match_parent"
@@ -150,7 +178,7 @@
             android:id="@+id/ProfileFragment_etl_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ProfileFragment_sp_locations"
+            android:layout_below="@id/ProfileFragment_etl_time"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_16sdp"
             android:hint="@string/Email"

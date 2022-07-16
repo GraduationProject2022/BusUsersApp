@@ -94,6 +94,11 @@ public class SignUpActivity extends AppCompatActivity {
 
                 }
             }
+
+            @Override
+            public void editInfo(@NonNull Task<Void> task, String edit) {
+
+            }
         });
 
 

@@ -70,4 +70,7 @@
     <string name="Fullname">Full name</string>
     <string name="Address">Address</string>
     <string name="drivers">Drivers</string>
+    <string name="EditEmailAndPassword">Edit email and password</string>
+    <string name="Time">Time to move on</string>
+    <string name="RYShure">Are you sure to change your profile image?</string>
 </resources>

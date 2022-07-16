@@ -51,6 +51,25 @@ public class Authentication {
         });
     }
 
+    public void EditEmailAndPass(String email, String password) {
+        if (!email.equals("")) {
+            firebaseUser().updateEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    authListiner.editInfo(task, "email");
+                }
+            });
+        }
+        if (!password.equals("")) {
+            firebaseUser().updatePassword(password).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    authListiner.editInfo(task, "password");
+                }
+            });
+        }
+    }
+
     public FirebaseUser firebaseUser() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         return currentUser;

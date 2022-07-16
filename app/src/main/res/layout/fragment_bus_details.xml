@@ -142,6 +142,30 @@
             android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_staticTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_staticSize"
+            android:layout_alignEnd="@id/DriverDetailsFragment_tv_staticDriverName"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/Time"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp" />
+
+        <TextView
+            android:id="@+id/DriverDetailsFragment_tv_Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DriverDetailsFragment_tv_staticSize"
+            android:layout_alignStart="@id/DriverDetailsFragment_tv_DriverName"
+            android:layout_marginTop="@dimen/_32sdp"
+            android:text="50"
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold" />
+
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/DriverDetailsFragment_fab_join"
@@ -159,11 +183,12 @@
             android:id="@+id/DriverDetailsFragment_tv_currentNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/DriverDetailsFragment_tv_staticSize"
-            android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_below="@id/DriverDetailsFragment_tv_Time"
             android:layout_marginTop="@dimen/_16sdp"
-            android:layout_toStartOf="@id/DriverDetailsFragment_fab_join"
-            android:background="@color/purple_500"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:background="#51669900"
             android:drawableEnd="@drawable/ic_baseline_person_pin_24"
             android:drawableTint="@color/black"
             android:padding="@dimen/_4sdp"
@@ -173,20 +198,19 @@
 
         <RatingBar
             android:id="@+id/BusDetailsFragment_ratingbar"
+            style="?android:attr/ratingBarStyleIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/DriverDetailsFragment_fab_join"
+            android:layout_below="@id/DriverDetailsFragment_tv_currentNum"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_16sdp"
             android:layout_marginBottom="@dimen/_16sdp"
-            android:stepSize=".5"
-            style="?android:attr/ratingBarStyleIndicator"
-            android:max="5"
             android:isIndicator="true"
+            android:max="5"
             android:numStars="5"
-            android:layout_centerHorizontal="true"
             android:rating="2"
-            />
+            android:stepSize=".5" />
 
     </RelativeLayout>
 

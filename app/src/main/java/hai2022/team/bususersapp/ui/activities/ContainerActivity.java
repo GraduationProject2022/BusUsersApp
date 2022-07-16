@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import hai2022.team.bususersapp.ui.fragments.AboutFragment;
+import hai2022.team.bususersapp.ui.fragments.EditEmailAndPasswordFragment;
 import hai2022.team.bususersapp.ui.fragments.EditProfileFragment;
 import hai2022.team.bususersapp.R;
 import hai2022.team.bususersapp.databinding.ActivityContainerBinding;
@@ -54,6 +55,8 @@ public class ContainerActivity extends AppCompatActivity {
         }else if (i.getStringExtra(Constants.FRAGMENT).equals(Constants.ABOUT_FRAGMENT)){
             getSupportFragmentManager().beginTransaction().replace(R.id.ContainerActivity_container, AboutFragment.newInstance()).commit();
             binding.maintoolbar.maintoolbarTvTitle.setText("About");
+        }else if(i.getStringExtra(Constants.FRAGMENT).equals(Constants.EDIT_EMAIL_AND_PASSWORD_FRAGMENT)){
+            getSupportFragmentManager().beginTransaction().replace(R.id.ContainerActivity_container, EditEmailAndPasswordFragment.newInstance()).commit();
         }
     }
 

@@ -27,6 +27,7 @@ import hai2022.team.bususersapp.databases.firebase.CloudStorage;
 import hai2022.team.bususersapp.databinding.ActivityMainBinding;
 import hai2022.team.bususersapp.interfaces.StorageListener;
 import hai2022.team.bususersapp.ui.fragments.BusDetailsFragment;
+import hai2022.team.bususersapp.ui.fragments.EditEmailAndPasswordFragment;
 import hai2022.team.bususersapp.ui.fragments.ProfileFragment;
 import hai2022.team.bususersapp.ui.fragments.StudentHomeFragment;
 import hai2022.team.bususersapp.databases.firebase.Authentication;
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         });
         realtime.getUser(authentication.firebaseUser().getDisplayName(), authentication.firebaseUser().getUid());
 
+
         binding.MainActivityBnv.setOnItemSelectedListener(this);
     }
 
@@ -161,6 +163,9 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
                 } else if (authentication.firebaseUser().getDisplayName().equals("student")) {
                     Toast.makeText(this, "Student", Toast.LENGTH_SHORT).show();
                     getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, StudentHomeFragment.newInstance()).commit();
+                }else{
+                    getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, EditEmailAndPasswordFragment.newInstance()).commit();
+
                 }
                 binding.maintoolbar.maintoolbarTvTitle.setText(R.string.Home);
                 return true;

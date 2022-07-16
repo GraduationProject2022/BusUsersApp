@@ -130,10 +130,12 @@ public class Realtime {
     }
 
     public void isReserved(String uid) {
-        myRef.child("users").child("student").child("Reservation").addValueEventListener(new ValueEventListener() {
+        myRef.child("users").child("Reservation").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.hasChild(uid)){
                     reservationsListiner.isReserved(snapshot.hasChild(uid));
+                }
             }
 
             @Override
@@ -144,7 +146,7 @@ public class Realtime {
     }
 
     public void ReservedBusId(String uid) {
-        myRef.child("users").child("student").child("Reservation").child(uid).addValueEventListener(new ValueEventListener() {
+        myRef.child("users").child("Reservation").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 try {
@@ -170,7 +172,7 @@ public class Realtime {
         myRef.child("Reservations").child(id).child(uid).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                myRef.child("users").child("student").child("Reservation").child(uid).setValue(map);
+                myRef.child("users").child("Reservation").child(uid).setValue(map);
                 reservationsListiner.onReservationListener(task.isSuccessful());
             }
         });
@@ -178,7 +180,7 @@ public class Realtime {
             myRef.child("Reservations").child(id).child(uid).setValue(null).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    myRef.child("users").child("student").child("Reservation").child(uid).setValue(null);
+                    myRef.child("users").child("Reservation").child(uid).setValue(null);
                     reservationsListiner.onReservationListener(task.isSuccessful());
                 }
             });
