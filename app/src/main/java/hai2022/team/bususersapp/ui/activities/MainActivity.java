@@ -81,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         } else if (authentication.firebaseUser().getDisplayName().equals("student")) {
             Toast.makeText(this, "Student", Toast.LENGTH_SHORT).show();
             getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, StudentHomeFragment.newInstance()).commit();
+        }else {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, CoHomeFragment.newInstance("student")).commit();
         }
 
 
@@ -166,8 +168,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
                     Toast.makeText(this, "Student", Toast.LENGTH_SHORT).show();
                     getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, StudentHomeFragment.newInstance()).commit();
                 } else {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, EditEmailAndPasswordFragment.newInstance()).commit();
-
+                    getSupportFragmentManager().beginTransaction().replace(R.id.MainActivity_layout_container, CoHomeFragment.newInstance("student")).commit();
                 }
                 binding.maintoolbar.maintoolbarTvTitle.setText(R.string.Home);
                 return true;
